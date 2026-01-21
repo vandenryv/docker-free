@@ -10,7 +10,7 @@ be accessible on `localhost:2376`.
 
 Result: You'll get a safe, well-performing docker environment without license restrictions. 
 You can use it from Windows or WSL2/Linux applications alike. It will only be able to run Linux containers, not Windows
-containers. However, the latter is really, really rare, so it shouldn't be something you would miss.
+containers. However, the latter is a really, really rare requirement, so it shouldn't be something you would miss.
 
 
 <br>
@@ -39,6 +39,8 @@ This guide assumes that you already have WSL2 running with an Ubuntu distro, v22
 
 ### Step 1 - Install docker engine inside WSL
 
+(In WSL/Ubuntu)
+
 1. Install docker engine inside WSL (Ubuntu) by following the [guide from Docker Inc.](https://docs.docker.com/engine/install/ubuntu). 
 Use the "apt repository method" for installation. It is the only future proof solution. 
 1. Post-installation:   `sudo usermod -aG docker $USER`
@@ -60,8 +62,8 @@ You will need to secure your docker daemon from unauthorized access. Docker (the
 no longer allow unprotected daemons to start. It works for now but we better make ourselves future proof. And safe.
 
 The way to do this is to protect the docker daemon with mTLS (mutual TLS). The docker daemon will encrypt the traffic with
-a server-side certificate so effectively it will be exposing `https`, not `http`. At the same time, the server will only
-allow clients which provide an acceptable client-side certificate during the TLS handshake, to connect. In others words: 
+a server-side certificate so it will be exposing `https`, not `http`. At the same time, the server will only
+allow clients which provide an acceptable client-side certificate during the TLS handshake, to connect. In other words: 
 both sides of the connection have a certificate/private-key combo.
 
 How?
