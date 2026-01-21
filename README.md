@@ -160,6 +160,10 @@ Verify:
 ps -efd | grep dockerd
 ```
 
+Since we are using Systemd's override mechanism you will not lose this customization when Ubuntu/APT regularly updates
+the `docker` package.
+
+
 <br>
 <br>
 
